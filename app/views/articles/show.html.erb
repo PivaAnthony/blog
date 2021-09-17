@@ -2,27 +2,18 @@
 
 <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
-
 <h2>Comments</h2>
 <% @article.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
+    <strong>User:</strong>
     <%= "Dev" %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
     <%= comment.body %>
   </p>
 <% end %>
 
-<h2>Add a comment:</h2>
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
   <p>
     <%= form.label "Insira um comentário" %><br>
@@ -32,3 +23,13 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<div>
+  <button><%= link_to "Edit", edit_article_path(@article)%></button>
+  <button><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+  </button>
+  <button><%= link_to "Back", root_path %></button>
+
+</div>
