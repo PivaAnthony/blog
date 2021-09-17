@@ -3,26 +3,9 @@
 <p><%= @article.body %></p>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>User:</strong>
-    <%= "Dev" %>
-  </p>
+<%= render @article.comments %>
 
-  <p>
-    <%= comment.body %>
-  </p>
-<% end %>
-
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label "Insira um comentário" %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form'%>
 
 <div>
   <button><%= link_to "Edit", edit_article_path(@article)%></button>
